@@ -5,6 +5,7 @@ import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 
+//redux library
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger';
@@ -13,12 +14,13 @@ import thunkMiddleware from 'redux-thunk';
 
 //logger helps logout events
 const logger = createLogger();
-//create store
+//use combineReducers to combine reducers into one
 const rootReducer = combineReducers({ searchRobots, requestRobots})
+//create store, pass in reducer and middleware
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger));
 
 ReactDOM.render(
-                //provider component pass down the store
+                //provider component taking care of pass down the store
                 <Provider store={store}>
                     <App />
                 </Provider>, document.getElementById('root')

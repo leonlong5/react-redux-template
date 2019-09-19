@@ -22,10 +22,12 @@ const mapStateToProps = (state) => {
 // the function returns an object then uses connect to change the data from redecers.
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),  
     onRequestRobots: () => dispatch(requestRobots())
   }
 }
+ //you can think of we put the event handlers for this component in mapDispatchToProps
+ //when it being called, excute dispatch to the action
 
 class App extends Component {
   componentDidMount() {
@@ -53,5 +55,6 @@ class App extends Component {
   }
 }
 
+//connect the redux store with componet App
 // action done from mapDispatchToProps will channge state from mapStateToProps
 export default connect(mapStateToProps, mapDispatchToProps)(App)
